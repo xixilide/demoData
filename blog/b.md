@@ -1,7 +1,6 @@
 # 我是B页面--记录存储数据的笔记
 
-# 数据
-###
+### 数据
 ```js
 import axios from 'axios';
 //用于请求数据，get 方法 post request response
