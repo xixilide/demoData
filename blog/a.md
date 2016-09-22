@@ -31,11 +31,6 @@ class Marked extends React.Component {
 export default Marked;
 ```
 
-### 表格
-
-| 姓名           |        性别     |
-| :------------- | :------------- |
-| xixilide       | 女              |
 ****
 ### 通过md文件的github地址来实现分页
 
