@@ -3,4 +3,7 @@
   {"index":"2","title":"数据存储","desc":"远端存储的连接","url":"b"},
   {"index":"3","title":"bootstrap知识","desc":"关于bootstrap的用法","url":"c"},
   {"index":"4","title":"react表单","desc":"表单用法","url":"d"}
+  {"index":"5","title":"react生命周期","desc":"生命周期的简单用法","url":"e"}
+  {"index":"6","title":"flex布局","desc":"flex布局的简单用法","url":"f"}
+
 ]

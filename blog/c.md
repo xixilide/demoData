@@ -54,6 +54,7 @@ return(
     <div className="thumbnail">
       <img src={this.props.img}  />
       <div className="caption">
+      //props是传来的值
         <h3>{this.props.title}</h3>
         <p>{this.props.desc}</p>
         <p><a className="btn btn-primary" role="button" onClick={this.handleJump.bind(this)}>Button</a></p>
