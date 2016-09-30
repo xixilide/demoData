@@ -6,8 +6,9 @@
   {"index":"5","title":"react生命周期","desc":"生命周期的简单用法","url":"e"},
   {"index":"6","title":"flex布局","desc":"flex布局的简单用法","url":"f"},
   {"index":"7","title":"mongodb知识","desc":"MongoDB 数据的增删查改","url":"g"},
-
   {"index":"8","title":"React Transform Boilerplate","desc":"echarts图表应用","url":"h"},
-  {"index":"9","title":"Git和Github","desc":"Git和Github基本操作手册","url":"i"}
+  {"index":"9","title":"Git和Github","desc":"Git和Github基本操作手册","url":"i"},
+  {"index":"10","title":"mongoose知识","desc":"mongoose将数据记录封装成对象","url":"j"},
+  {"index":"11","title":"express知识","desc":"Express 后台框架","url":"k"}
 
 ]
