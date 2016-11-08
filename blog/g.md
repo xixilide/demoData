@@ -1,41 +1,59 @@
 # mongodb数据的增删查改
 
-## 1. 什么是MongoDB
+### 1. 什么是MongoDB
+
 MongoDB是一个基于分布式文件存储的开源数据库系统
+
 MongoDB 将数据存储为一个文档，数据结构由键值(key=>value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。
-## 2. MongoDB安装
-2.1 windows安装
+
+### 2. MongoDB安装
+
+#### 2.1 windows安装
+
 Windows官方安装指南
 
-2.2 mac安装
+#### 2.2 mac安装
+
 Mac官方安装指南
 
 先安装homebrew
 
-http://brew.sh/
+()[http://brew.sh/]
 使用brew安装mongodb
 
 - brew install mongodb
 再安装可视化工具 Robomongo
 
-## 3. mongodb启动与连接
-3.1 windows启动服务器端
+### 3. mongodb启动与连接
+
+#### 3.1 windows启动服务器端
+
 - mongod --dbpath=./data
 
 如果出现waiting for connections on port 27017就表示启动成功,已经在27017端口上监听了客户端的请求
 注意：--dbpath后的值表示数据库文件的存储路径,而且后面的路径必须事先创建好，必须已经存在，否则服务开启失败
+
 注意：这个命令窗体绝对不能关,关闭这个窗口就相当于停止了mongodb服务
 也可以在命令后面加上参数 --port 27017 来指定端口
-3.2 启动客户端连接服务器
+
+#### 3.2 启动客户端连接服务器
+
 命令窗体中输入 mongo --host=127.0.0.1 或者 mongo 按回车键
 
 备注：--host后的值表示服务器的ip地址
-## 4. MongoDB基本概念
+
+### 4. MongoDB基本概念
+
 数据库 MongoDB的单个实例可以容纳多个独立的数据库，比如一个学生管理系统就可以对应一个数据库实例
+
 集合 数据库是由集合组成的,一个集合用来表示一个实体,如学生集合
+
 文档 集合是由文档组成的，一个文档表示一条记录,比如一位同学张三就是一个文档
-## 5. 数据库操作
-5.1 使用数据库
+
+### 5. 数据库操作
+
+#### 5.1 使用数据库
+
 语法
 
 - use database_name      database_name代表数据库的名字
@@ -43,84 +61,120 @@ http://brew.sh/
 注：如果此数据库存在，则切换到此数据库下,如果此数据库还不存在也可以切过来
 
 实例 切换到 person数据库下
+
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-8.png)
-5.2 查看所有数据库
+
+#### 5.2 查看所有数据库
+
 语法
 
 - show dbs
 
-备注: 我们刚创建的数据库person 如果不在列表内， 要显示它，我们需要向 person 数据库插入一些数据 db.person.insert({name:"zhangSan",age:30})
-![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-7.png)
-5.3 查看当前使用的数据库
-语法
+备注: 我们刚创建的数据库person 如果不在列表内， 要显示它，我们需要向 person 数据库插入一些数据
+```
+ db.person.insert({name:"zhangSan",age:30})
+```
 
+![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-7.png)
+
+#### 5.3 查看当前使用的数据库
+
+语法
+```
 - db 或 db.getName()
+```
 
 注：db代表的是当前数据库 也就是person这个数据库
+
 实例
+
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-9.png)
 
-5.4 删除数据库
-语法
+#### 5.4 删除数据库
 
+语法
+```
 db.dropDatabase()
+```
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/mongodb-shanChuShuJuKu-1.png)
 
-## 6. 集合操作
-6.1 查看帮助
-语法
+### 6. 集合操作
 
+#### 6.1 查看帮助
+
+语法
+```
 - db.worker.help()
+```
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-13.png)
 
-6.2 查看数据库下的集合
-语法
+#### 6.2 查看数据库下的集合
 
+语法
+```
 - show collections
+```
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-11.png)
-6.3 创建集合
-创建一个空集合
 
+#### 6.3 创建集合
+
+创建一个空集合
+```
 - db.createCollection(collection_Name)
+```
      collection_Name集合的名称
+
 创建集合并插入一个文档
+
 collection_Name集合的名称
+
 document要插入的文档
+
 - db.collection_Name.insert(document)
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-14.png)
-## 7. 插入文档
-7.1 insert
-语法
 
+### 7. 插入文档
+
+#### 7.1 insert
+
+语法
+```
  - db.collection_name.insert(document)
+```
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-15.png)
 
 ```
 每当插入一条新文档的时候mongodb会自动为此文档生成一个_id属性,_id一定是唯一的，用来唯一标识一个文档 _id也可以直接指定，但如果数据库中此集合下已经有此_id的话插入会失败
 ```
-7.2 save
+#### 7.2 save
 
 语法
-
+```
 - db.collection_name.save(document)
+```
 
 ```
 注：如果不指定 _id 字段 save() 方法类似于 insert() 方法。如果指定 _id 字段，则会更新该 _id 的数据。
 ```
+```
 - db.person.save({name:"xiaoHong",age:50})
+```
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/mongodb-baoCun-1.png)
 
+```
 - db.person.save({_id:ObjectId("562c9caf671c978b6596e825"),name:"xiaoHong",age:10})
+```
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/mongodb-baoCun-2.png)
 
-## 8. 更新文档
+### 8. 更新文档
+
 语法
 
 - db.collection.update(
@@ -133,6 +187,7 @@ document要插入的文档
 )
 
 参数说明
+
 ```
 query 查询条件,指定要更新符合哪些条件的文档
 update 更新后的对象或指定一些更新的操作符
@@ -148,7 +203,8 @@ multi 可选，mongodb 默认只更新找到的第一条记录，如果这个参
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-18.png)
 
-## 9. 文档的删除
+### 9. 文档的删除
+
 remove方法是用来移除集合中的数据
 
 语法
@@ -174,8 +230,10 @@ remove方法是用来移除集合中的数据
 - db.person.remove({name:"xiaoHong"},1)
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/mongodb-shanChuShuJu-1.png)
-## 10. 查询文档
-10.1 find
+### 10. 查询文档
+
+#### 10.1 find
+
 语法
 
 - db.collection_name.find()
@@ -185,10 +243,13 @@ remove方法是用来移除集合中的数据
 实例 查询worker下所有的文档
 
 - db.worker.find()
-10.2 查询指定列
+
+#### 10.2 查询指定列
+
 语法
 
 - db.collection_name.find({queryWhere},{key:1,key:1})
+
 参数列表
 
 - collection_name 集合的名字
@@ -201,7 +262,8 @@ remove方法是用来移除集合中的数据
 - db.worker.find({},{age:1}) 查询指定列
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/mongodb-FindWhere-1.png)
-10.3 findOne
+
+#### 10.3 findOne
 查询匹配结果的第一条数据 语法
 
 - db.collection_name.findOne()
@@ -211,10 +273,11 @@ remove方法是用来移除集合中的数据
 - db.worker.findOne()
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/mongodb-baoCun-3.png)
-## 11. 条件操作符
+### 11. 条件操作符
+
 条件操作符用于比较两个表达式并从mongoDB集合中获取数据
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/mongodb-where-1.png)
-11.1 大于操作符
+#### 11.1 大于操作符
 语法
 
 - db.collectoin_name.find({<key>:{$gt:<value>}})
@@ -224,7 +287,8 @@ remove方法是用来移除集合中的数据
 - db.worker.find({age:{$gt:30}}) 查询age 大于 30的数据
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-16-2.png)
-11.2 大于等于操作符
+
+#### 11.2 大于等于操作符
 
 
 实例
@@ -232,7 +296,8 @@ remove方法是用来移除集合中的数据
 - db.worker.find({age: {$gte: 30}}) 查询age 3大于等于30 的数据
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-16-4.png)
-11.3 小于操作符
+
+#### 11.3 小于操作符
 语法
 
 - db.collectoin_name.find( {<key>:{$lt:<value>}})
@@ -242,61 +307,84 @@ remove方法是用来移除集合中的数据
 - db.worker.find({age: {$lt: 30}}) 查询age 小于30的数据
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-16-3.png)
-11.4 小于等于操作符
+
+#### 11.4 小于等于操作符
+
 语法
 
 - db.worker.find({age: {$lte: 30}}) 查询age 小于等于30的数据
-![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-16-5.png)
-11.5 同时使用 $gte和$lte
-语法
 
+![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-16-5.png)
+
+#### 11.5 同时使用 $gte和$lte
+语法
+```
 - db.collectoin_name.find({<key>:{$gte:<value>},<key>:{$lte:<value>}})
+```
 
 实例 查询age 大于等于 30 并且 age 小于等于 50 的数据
 
+```
 - db.worker.find({age: {$gte: 30, $lte: 50}})
+```
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-16-6.png)
-11.6 等于
+
+#### 11.6 等于
+
 语法
+```
 
 - db.collectoin_name.find({<key>:<value>,<key>:<value>})
+```
 
 实例 查询age = 30的数据
 
+```
 - db.worker.find({"age": 30})
+```
 
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-16-1.png)
 
-11.7 使用 _ id进行查询
+#### 11.7 使用 _ id进行查询
+
 语法
-
+```
 - db.collectoin_name.find({"_ id" : ObjectId("value")})
-
+```
 参数
 
 value _ id的值
+
 实例 查询_id是 562af23062d5a57609133974 数据
 
+```
 - db.worker.find({"_ id" : ObjectId("562af23062d5a57609133974")})
-
+```
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-16-9.png)
-11.8 查询结果集的条数
+
+#### 11.8 查询结果集的条数
+
 语法
+```
 
 - db.collectoin_name.find().count()
+```
 
 实例
 ![](http://7xjf2l.com2.z0.glb.qiniucdn.com/3.mongodb-16-17.png)
 11.9 正则匹配
 语法
-
+```
 - db.collection.find({key:/value/})
+```
+
 参数
 
 collectoin_name 集合名称
 key 字段
 value 值
+
 实例 查询name里包含zhang的数据
 
 - db.worker.find({name:/value/})

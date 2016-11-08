@@ -1,6 +1,7 @@
-# 我是B页面--记录存储数据的笔记
+# 记录存储数据的笔记
 
 ### 数据
+
 ```js
 import axios from 'axios';
 //用于请求数据，get 方法 post request response
@@ -21,7 +22,9 @@ function getJson(){
 export { getJson };
 
 ```
+
 ### json 文件存储数据
+
 ```js
 [
  {"title":"第一天","desc":"第一天描述","img":"http://obmf232cc.bkt.clouddn.com/home1.jpg","url":"a"},

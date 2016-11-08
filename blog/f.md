@@ -1,4 +1,5 @@
 # 关于flex布局的运用
+
 ### flex教程
 
 - webkit-font-smoothing: antialiased;反锯齿的，将字体变清晰
@@ -35,6 +36,7 @@
       - stretch（默认值）：轴线占满整个交叉轴。
 
 ### 项目属性
+
   - order  属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
 
   - flex-grow  属性定义项目的放大比例，默认为0，
@@ -60,6 +62,7 @@
 ```
 
 ###  引入marked高亮样式
+
 ```js
 import hljs from 'highlight.js';
 import marked from 'marked';

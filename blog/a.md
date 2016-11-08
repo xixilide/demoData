@@ -1,4 +1,4 @@
-# 我是A页面-记录marked的笔记
+# 记录marked的笔记
 
 ### 导入marked包，用于.md文件
 
@@ -9,6 +9,7 @@ console.log(marked('I am using __markdown__.'));
 ```
 ****
 <!-- 分割线 -->
+
 ### .md文件的用法
 
 ```js

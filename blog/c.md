@@ -1,4 +1,4 @@
-# 我是C页面--用于记录bootstrap的笔记
+# 用于记录bootstrap的笔记
 
 ### 引入bootstrop
 
