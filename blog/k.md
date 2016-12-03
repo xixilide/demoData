@@ -1,17 +1,25 @@
 # express的知识
+
 ### node.js
+
 React 是一一个前端框架
+
 Express 是后台框架
+
 [](https://expressjs.com/)
 
 ### 安装express
+
 npm install --save express
 
 ### HTTP请求
+
 HTTP 请求 = Verb + Path
+
 HTTP 请求 = get/post/... + /about
 
 #### 导入express包
+
 var express = require('express')
 var app = express();
 
@@ -31,9 +39,11 @@ app.get('/xx',function (req,res){
 //监听端口
 app.listen(3000)
 ```
+
 http小知识：get/post请求（常用的）
 
 ### 返回html页面
+
 ```js
 app.get('/',function (req,res) {
   var page="<html>"+
@@ -60,9 +70,13 @@ app.get('/',function (req,res) {
   res.send(page)
  })
  ```
+
 ### curl 模拟请求
+
   在后台写curl命令：
+
 ```
 curl --request GET localhost:3000/xiaoyan
 ```
+
 （如何通过表单提交来获取数据？课下查资料）
